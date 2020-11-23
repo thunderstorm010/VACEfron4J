@@ -29,3 +29,6 @@ Rankcard card = builder
                 
 byte[] rankcardImage = VACEfronClient.rankcard(card);
 ```
+
+# Downloads
+Download the latest release from the github releases section. And then add it to your build. Please note that the dependencies are shaded in the jar.
