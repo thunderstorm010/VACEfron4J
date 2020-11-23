@@ -1,7 +1,7 @@
 # VACEfron4J
-A pure Java™️ api wrapper for [VACEfron's API](https://vacefron.nl/api).
-Please note that the client methods may throw IOException's, so handle them appropriately
-Json errors are automatically handled
+A pure Java™️ api wrapper for [VACEfron's API](https://vacefron.nl/api).\
+Please note that the client methods may throw IOException's, so handle them appropriately\
+Json errors are automatically handled\
 
 # Examples
 ```java
