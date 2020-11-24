@@ -1,11 +1,11 @@
 # VACEfron4J
-A pure Java™️ api wrapper for [VACEfron's API](https://vacefron.nl/api).\
-Please note that the client methods may throw IOException's, so handle them appropriately\
-Json errors are automatically handled\
+A pure Java™ wrapper for [VACEfron's API](https://vacefron.nl/api).\
+The client methods may throw IOException's, probably because of connectivity issues.
+
 
 # Examples
 ```java
-// This will return the bytes that have been got from the http request
+// This will return the image as an Java byte[]
 byte[] heavenBytes = VACEfronClient.heaven("https://cdn.discordapp.com/avatars/326260487220363275/fa5a18f0fe7c1b4692fc2275fd8493a9.png?size=4096");
 ```
 
@@ -31,4 +31,5 @@ byte[] rankcardImage = VACEfronClient.rankcard(card);
 ```
 
 # Downloads
-Download the latest release from the github releases section. And then add it to your build. Please note that the dependencies are shaded in the jar.
+Download the latest release from the github releases section and then add it to your build.\
+Dependencies are shaded in the jar, so you don't need to take care of them for now.

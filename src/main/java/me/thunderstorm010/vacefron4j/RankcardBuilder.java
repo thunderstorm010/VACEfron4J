@@ -1,6 +1,22 @@
+/*
+ * Copyright 2020 Yiğit Özdemir
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * 	http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package me.thunderstorm010.vacefron4j;
 
-import java.io.IOException;
+import java.awt.Color;
 
 import static me.thunderstorm010.vacefron4j.Rankcard.requireNotNull;
 
@@ -16,7 +32,7 @@ public class RankcardBuilder {
 
     // Nullables
     private BackgroundResolvable customBackground = null;
-    private Integer xpColor = null;
+    private Color xpColor = null;
     private Boolean isBoosting = null;
 
 
@@ -92,11 +108,11 @@ public class RankcardBuilder {
         return this;
     }
 
-    public Integer getXpColor() {
+    public Color getXpColor() {
         return xpColor;
     }
 
-    public RankcardBuilder setXpColor(Integer xpColor) {
+    public RankcardBuilder setXpColor(Color xpColor) {
         this.xpColor = xpColor;
         return this;
     }

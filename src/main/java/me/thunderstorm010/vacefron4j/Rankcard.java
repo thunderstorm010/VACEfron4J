@@ -1,3 +1,19 @@
+/*
+ * Copyright 2020 Yiğit Özdemir
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * 	http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package me.thunderstorm010.vacefron4j;
 
 import me.thunderstorm010.vacefron4j.internal.Pair;
@@ -7,6 +23,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.awt.Color;
 
 import static me.thunderstorm010.vacefron4j.internal.Pair.pair;
 
@@ -35,7 +52,7 @@ public class Rankcard {
         this.customBackground = customBackground;
     }
 
-    public Rankcard(String username, String avatar, int level, int rank, int currentXp, int nextLevelXp, int previousLevelXp, BackgroundResolvable customBackground, Integer xpColor) {
+    public Rankcard(String username, String avatar, int level, int rank, int currentXp, int nextLevelXp, int previousLevelXp, BackgroundResolvable customBackground, Color xpColor) {
         requireNotNull(username,avatar,level,rank,currentXp,nextLevelXp,previousLevelXp);
         this.username = username;
         this.avatar = avatar;
@@ -48,7 +65,7 @@ public class Rankcard {
         this.xpColor = xpColor;
     }
 
-    public Rankcard(String username, String avatar, int level, int rank, int currentXp, int nextLevelXp, int previousLevelXp, BackgroundResolvable customBackground, Integer xpColor, Boolean isBoosting) {
+    public Rankcard(String username, String avatar, int level, int rank, int currentXp, int nextLevelXp, int previousLevelXp, BackgroundResolvable customBackground, Color xpColor, Boolean isBoosting) {
         requireNotNull(username,avatar,level,rank,currentXp,nextLevelXp,previousLevelXp);
         this.username = username;
         this.avatar = avatar;
@@ -75,7 +92,7 @@ public class Rankcard {
         this.isBoosting = isBoosting;
     }
 
-    public Rankcard(String username, String avatar, int level, int rank, int currentXp, int nextLevelXp, int previousLevelXp, Integer xpColor, Boolean isBoosting) {
+    public Rankcard(String username, String avatar, int level, int rank, int currentXp, int nextLevelXp, int previousLevelXp, Color xpColor, Boolean isBoosting) {
         requireNotNull(username,avatar,level,rank,currentXp,nextLevelXp,previousLevelXp);
         this.username = username;
         this.avatar = avatar;
@@ -98,13 +115,13 @@ public class Rankcard {
 
     // Nullables
     private BackgroundResolvable customBackground = null;
-    private Integer xpColor = null;
+    private Color xpColor = null;
     private Boolean isBoosting = null;
 
 
     static void requireNotNull(Object... objects) {
         for (Object object : objects) {
-            if (object == null) throw new NullPointerException("Cannot be null");
+            if (object == null) throw new NullPointerException("Object cannot be null");
         }
     }
 
@@ -130,18 +147,34 @@ public class Rankcard {
         if (customBackground != null) {
             String bg;
             if (customBackground.getColor() != null) {
-                bg = Integer.toHexString(customBackground.getColor());
+                bg = convertToHex(customBackground.getColor());
             } else {
                 bg = URLEncoder.encode(customBackground.getUrl(),"UTF-8");
             }
             pairs.add(pair("custombg",bg));
         }
         if (xpColor != null) {
-            pairs.add(pair("xpcolor",xpColor.toString()));
+            pairs.add(pair("xpcolor",convertToHex(xpColor)));
         }
         if (isBoosting != null) {
             pairs.add(pair("isboosting",isBoosting.toString()));
         }
         return (Pair<String,String>[]) pairs.toArray();
+    }
+
+    private String convertToHex(Color color) {
+        String redHex = Integer.toHexString(color.getRed());
+        String greenHex = Integer.toHexString(color.getGreen());
+        String blueHex = Integer.toHexString(color.getBlue());
+        if (redHex.length() < 2) {
+            redHex = "0" + redHex;
+        }
+        if (greenHex.length() < 2) {
+            greenHex = "0" + greenHex;
+        }
+        if (blueHex.length() < 2) {
+            blueHex = "0" + blueHex;
+        }
+        return (redHex + greenHex + blueHex).toUpperCase();
     }
 }
