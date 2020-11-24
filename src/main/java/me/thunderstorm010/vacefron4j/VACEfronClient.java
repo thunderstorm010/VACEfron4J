@@ -170,8 +170,7 @@ public class VACEfronClient {
     /**
      * Creates a rankcard image.
      * @param card The Rankcard instance. This could be created with [RankcardBuilder#build]
-     * @return
-     * @throws IOException
+     * @return A byte[] of the image.
      */
     public static byte[] rankcard(Rankcard card) throws IOException {
         return api("rankcard", card.convert());
