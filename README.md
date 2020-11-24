@@ -21,8 +21,8 @@ Rankcard card = builder
       .setNextLevelXp(1000)
       .setPreviousLevelXp(500)
       // Optional
-      .setCustomBackground(BackgroundResolvable.fromColor(Color.BLACK))
-      .setXpColor(0xFFFFFF)
+      .setCustomBackground(BackgroundResolvable.fromColor(Color.GREEN))
+      .setXpColor(Color.RED)
       .setBoosting(true)
 
       .build();
